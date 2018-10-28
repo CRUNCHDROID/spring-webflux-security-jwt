@@ -14,19 +14,17 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 public class SecuredRestApplicationTest {
 
     @Autowired
-    ApplicationContext context;
+    private ApplicationContext context;
 
     @Autowired
     private WebTestClient rest;
 
     @Test
-    public void messageWhenNotAuthenticated() throws Exception {
+    public void messageWhenNotAuthenticated() {
         this.rest
                 .get()
                 .uri("/api/admin")
                 .exchange()
                 .expectStatus().isUnauthorized();
     }
-
-
 }
